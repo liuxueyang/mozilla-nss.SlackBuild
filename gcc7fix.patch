@@ -1,0 +1,15 @@
+diff --git a/nss/lib/libpkix/pkix_pl_nss/pki/pkix_pl_ocsprequest.c b/nss/lib/libpkix/pkix_pl_nss/pki/pkix_pl_ocsprequest.c
+index 171a3d2..7ed00db 100644
+--- a/nss/lib/libpkix/pkix_pl_nss/pki/pkix_pl_ocsprequest.c
++++ b/nss/lib/libpkix/pkix_pl_nss/pki/pkix_pl_ocsprequest.c
+@@ -89,8 +89,8 @@ pkix_pl_OcspRequest_Hashcode(
+         PKIX_HASHCODE(ocspRq->signerCert, &signerHash, plContext,
+                 PKIX_CERTHASHCODEFAILED);
+ 
+-        *pHashcode = (((((extensionHash << 8) || certHash) << 8) ||
+-                dateHash) << 8) || signerHash;
++        *pHashcode = ((PKIX_UInt32)(((PKIX_UInt32)((extensionHash << 8) || certHash) << 8) ||
++                 dateHash) << 8) || signerHash;
+ 
+ cleanup:
+ 
